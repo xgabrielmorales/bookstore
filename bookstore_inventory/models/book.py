@@ -10,7 +10,7 @@ class Book(models.Model):
     pub_date  = models.DateField()
 
     class Meta:
-        ordering = ["author", "publication_date"]
+        ordering = ["author", "pub_date"]
         verbose_name = "Libro"
         verbose_name_plural = "Libros"
 
