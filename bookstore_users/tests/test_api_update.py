@@ -28,7 +28,7 @@ class UserUpdateTestCase(TestSetUp):
 
         response = self.client.put(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id}
             ),
             data = new_user_data,
@@ -49,7 +49,7 @@ class UserUpdateTestCase(TestSetUp):
 
         response = self.client.put(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id + 5}
             ),
             data = new_user_data,
@@ -68,7 +68,7 @@ class UserUpdateTestCase(TestSetUp):
 
         response = self.client.put(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id + 5}
             ),
             data = new_user_data,

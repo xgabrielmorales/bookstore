@@ -23,4 +23,4 @@ class TestSetUp(APITestCase):
 
         cls.login_url   = reverse("token_obtain_pair")
         cls.refresh_url = reverse("token_refresh")
-        cls.crear_listar_url = reverse("user:get_post")
+        cls.crear_listar_url = reverse("users:get_post")

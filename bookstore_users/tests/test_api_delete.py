@@ -24,7 +24,7 @@ class UserDeleteTestCase(TestSetUp):
     def test_user_can_delete_their_data(self):
         response = self.client.delete(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id}
             ),
             **self.HEADER
@@ -36,7 +36,7 @@ class UserDeleteTestCase(TestSetUp):
     def test_user_cant_delete_data_of_another_user(self):
         response = self.client.delete(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id + 4}
             ),
             **self.HEADER
@@ -54,7 +54,7 @@ class UserDeleteTestCase(TestSetUp):
 
         response = self.client.delete(
             reverse(
-                "user:delete_put",
+                "users:delete_put",
                 kwargs = {"pk": self.user_saved.id}
             ),
         )
