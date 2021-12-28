@@ -1,0 +1,71 @@
+#+STARTUP: Content
+
+* BOOKSTORE API
+** Instalación/Configuración
+*** Previo
+Es una buena idea crear un entorno virtual antes de instalar las
+dependencias. Puedes hacerlo con el siguiente comando:
+
+#+BEGIN_SRC bash
+  $ python -m venv .env
+#+END_SRC
+
+Ahora será necesario activar el entorno virtual:
+
+#+BEGIN_SRC bash
+  $ source .env/bin/activate
+#+END_SRC
+
+Luego de activar el entorno virtual, deberás ver un indicador en el
+prompt con el nombre del entorno, en este caso =(.env)=, con eso sabrás
+que el entorno está activado. Luego instala las dependencias:
+
+#+BEGIN_SRC bash
+  (.env) $ pip install -r requirements.txt
+#+END_SRC
+
+*** Base de Datos
+Por defecto se hace uso de =Sqlite3= como base de datos, con esa
+configuración debería funcionar, sin embargo, si se quiere usar una
+distinta ve al archivo [[file:./bookstore_project/settings.py][settings.py]] y añade tu configuración en la
+variable =DATABASES=.
+
+#+BEGIN_SRC python
+  DATABASES = {
+      'default': {
+          'ENGINE'   : 'django.db.backends.',
+          'NAME'     : '',
+          'USER'     : '',
+          'PASSWORD' : '',
+          'HOST'     : '',
+          'PORT'     : 5432
+      }
+  }
+#+END_SRC
+
+*** Migraciones
+Luego de configurar la base de datos será necesario realizar las
+migraciones, para ello ve a la raíz del proyecto y desde tu terminal
+ejecuta el siguiente comando:
+
+#+BEGIN_SRC bash
+  (.env) $ python manage.py makemigrations
+  (.env) $ python manage.py migrate
+#+END_SRC
+
+*** Super-Usuario
+Probablemente querrás tener un superuser para acceder al panel de
+administración de Django, lo podrás hacer con el siguiente comando:
+
+#+BEGIN_SRC bash
+  (.env) $ python manage.py craetesuperuser
+#+END_SRC
+
+*** Servidor
+Una vez completados los pasos anteriores debería ser suficiente para
+que puedas correr el servidor, para ello bastará con correr el
+siguiente comando desde tu terminal estando en la raiz del proyecto:
+
+#+BEGIN_SRC bash
+  (.env) $ python manage.py runserver
+#+END_SRC
