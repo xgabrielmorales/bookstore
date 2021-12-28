@@ -34,3 +34,17 @@ class UserDestroyUpdateView(GenericAPIView):
         serializer.save()
 
         return Response(serializer.data, status = status.HTTP_200_OK)
+
+    def delete(self, request, *args, **kwargs):
+        token = request.META.get("HTTP_AUTHORIZATION").split(" ")[1]
+        tokenBackend = TokenBackend(algorithm = settings.SIMPLE_JWT["ALGORITHM"])
+        valid_data = tokenBackend.decode(token, verify = False)
+        user_id = valid_data["user_id"]
+
+        if kwargs["pk"] != user_id:
+            return Response(status = status.HTTP_401_UNAUTHORIZED)
+
+        instance = User.objects.get(id = user_id)
+        instance.delete()
+
+        return Response(status = status.HTTP_204_NO_CONTENT)
