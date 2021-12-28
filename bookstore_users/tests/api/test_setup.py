@@ -5,7 +5,7 @@ from rest_framework.test import APITestCase, APIClient
 # Faker
 from faker import Faker
 # Local
-from bookstore_users.tests.factory import UserFactory
+from bookstore_users.tests.api.factory import UserFactory
 
 class TestSetUp(APITestCase):
 

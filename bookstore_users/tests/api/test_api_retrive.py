@@ -2,7 +2,7 @@
 from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
 # Local
-from bookstore_users.tests import TestSetUp
+from bookstore_users.tests.api import TestSetUp
 
 class UserRetriveTestCase(TestSetUp):
     @classmethod

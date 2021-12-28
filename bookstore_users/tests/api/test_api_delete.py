@@ -3,7 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
 # Local
-from bookstore_users.tests import TestSetUp
+from bookstore_users.tests.api import TestSetUp
 from bookstore_users.models.user import User
 
 class UserDeleteTestCase(TestSetUp):

@@ -2,7 +2,7 @@ from django.urls import reverse
 # Django REST Framework
 from rest_framework import status
 # Local
-from bookstore_users.tests import TestSetUp
+from bookstore_users.tests.api import TestSetUp
 
 class UserUpdateTestCase(TestSetUp):
     @classmethod
