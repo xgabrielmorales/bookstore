@@ -4,8 +4,8 @@ from rest_framework.response    import Response
 from rest_framework.generics    import GenericAPIView
 from rest_framework.permissions import IsAuthenticated
 # Local
-from bookshop_inventory.models.book import Book
-from bookshop_inventory.serializers import BookSerializer
+from bookstore_inventory.models.book import Book
+from bookstore_inventory.serializers import BookSerializer
 
 class BookListCreateView(GenericAPIView):
     queryset           = Book.objects.all()
