@@ -3,7 +3,6 @@ from django.contrib.auth.models  import AbstractBaseUser, PermissionsMixin
 from django.contrib.auth.hashers import make_password
 from .userManager import UserManager
 
-
 class User(AbstractBaseUser, PermissionsMixin):
     # "password" field is already included in AbstractBaseUser
 
@@ -20,6 +19,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+
+    def save(self, **kwargs):
+        some_salt = "MUj0DrIK6vgtdIYepkIxN"
+        self.password = make_password(self.password, salt = some_salt)
+        return super().save(**kwargs)
 
     def __str__(self):
         return f"{self.first_name}" if not self.last_name \
