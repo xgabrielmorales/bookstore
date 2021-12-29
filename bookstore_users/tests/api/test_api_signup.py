@@ -21,12 +21,16 @@ class UserSignUpTestCase(TestSetUp):
         new_user = User.objects.get(email = user_valid_data["email"])
         self.assertEqual(new_user.email, self.user_object.email)
 
+        # Password should be hashed
+        user = User.objects.get(pk = self.user_saved.id)
+        self.assertNotEqual(user_valid_data["password"], user.password)
+
     def test_user_cannot_register_with_invalid_data(self):
         user_invalid_data = {
-            "invalid_first_name"   : self.faker_obj.first_name(),
-            "invalid_last_name" : self.faker_obj.last_name(),
-            "invalid_email"    : self.faker_obj.email(),
-            "invalid_password" : self.faker_obj.password(),
+            "invalid_first_name" : self.faker_obj.first_name(),
+            "invalid_last_name"  : self.faker_obj.last_name(),
+            "invalid_email"      : self.faker_obj.email(),
+            "invalid_password"   : self.faker_obj.password(),
         }
 
         response = self.client.post(self.crear_listar_url, data = user_invalid_data)

@@ -8,7 +8,7 @@ class UserLogInTestCase(TestSetUp):
     def test_valid_login(self):
         user_data = {
             "email"   : self.user_saved.email,
-            "password": self.user_saved_password,
+            "password": self.raw_password,
         }
 
         response = self.client.post(self.login_url, data = user_data)
