@@ -1,5 +1,5 @@
 from faker   import Faker as FakerClass
-from factory import Faker, django, post_generation
+from factory import Faker, django
 
 from bookstore_users.models.user import User
 

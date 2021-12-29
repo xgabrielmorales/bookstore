@@ -13,10 +13,11 @@ class TestSetUp(APITestCase):
     def setUpClass(cls):
         super().setUpClass()
 
-        cls.user_saved_password = "password123"
-        cls.user_saved  = UserFactory.create(
-            password = cls.user_saved_password
-        )
+        cls.user_saved = UserFactory.create()
+        cls.user_saved_password = cls.user_saved.password
+        cls.user_saved.set_password(cls.user_saved_password)
+        cls.user_saved.save()
+
         cls.user_object = UserFactory.build()
         cls.faker_obj   = Faker()
         cls.client      = APIClient()
