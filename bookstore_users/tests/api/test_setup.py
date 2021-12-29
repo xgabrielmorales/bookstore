@@ -14,8 +14,8 @@ class TestSetUp(APITestCase):
         super().setUpClass()
 
         cls.user_saved = UserFactory.create()
-        cls.user_saved_password = cls.user_saved.password
-        cls.user_saved.set_password(cls.user_saved_password)
+        cls.raw_password = cls.user_saved.password
+        cls.user_saved.set_password(cls.raw_password)
         cls.user_saved.save()
 
         cls.user_object = UserFactory.build()

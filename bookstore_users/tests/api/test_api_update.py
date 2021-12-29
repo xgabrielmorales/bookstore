@@ -11,7 +11,7 @@ class UserUpdateTestCase(TestSetUp):
 
         user_data = {
             "email"    : cls.user_saved.email,
-            "password" : cls.user_saved_password,
+            "password" : cls.raw_password,
         }
 
         response   = cls.client.post(cls.login_url, user_data)
