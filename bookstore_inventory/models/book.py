@@ -7,7 +7,7 @@ class Book(models.Model):
     editorial = models.CharField(max_length = 150)
     gender    = models.CharField(max_length = 100)
     num_pages = models.IntegerField(verbose_name = "number of pages")
-    pub_date  = models.DateField()
+    pub_date  = models.DateField(verbose_name = "publication date")
 
     class Meta:
         ordering = ["author", "pub_date"]
