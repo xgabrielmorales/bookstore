@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from bookstore_inventory.models.book import Book
+
+admin.site.register(Book)
