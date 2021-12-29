@@ -11,8 +11,8 @@ class Book(models.Model):
 
     class Meta:
         ordering = ["author", "pub_date"]
-        verbose_name = "Libro"
-        verbose_name_plural = "Libros"
+        verbose_name = "Book"
+        verbose_name_plural = "Books"
 
     def __str__(self):
         return f"{self.title}"
