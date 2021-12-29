@@ -20,11 +20,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
 
-    def save(self, **kwargs):
-        some_salt = "MUj0DrIK6vgtdIYepkIxN"
-        self.password = make_password(self.password, salt = some_salt)
-        return super().save(**kwargs)
-
     def __str__(self):
         return f"{self.first_name}" if not self.last_name \
             else f"{self.first_name} {self.last_name}"
