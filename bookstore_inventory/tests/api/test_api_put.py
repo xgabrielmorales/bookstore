@@ -22,7 +22,8 @@ class BookPutTestCase(TestSetUp):
                 "inventory:book_delete_put",
                 kwargs = {"pk": self.book_saved.id}
             ),
-            data = new_book_data
+            data = new_book_data,
+            **self.HEADER
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)

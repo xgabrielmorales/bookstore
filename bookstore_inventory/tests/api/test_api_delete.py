@@ -14,6 +14,7 @@ class BookDeleteTestCase(TestSetUp):
                 "inventory:book_delete_put",
                 kwargs = {"pk": self.book_saved.id}
             ),
+            **self.HEADER
         )
 
         self.assertEqual(

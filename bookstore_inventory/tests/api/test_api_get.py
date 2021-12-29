@@ -8,5 +8,5 @@ from bookstore_inventory.tests.api.test_setup import TestSetUp
 
 class BookGetTestCase(TestSetUp):
     def test_list_all_books(self):
-        response = self.client.get(reverse("inventory:book_get_post"))
+        response = self.client.get(reverse("inventory:book_get_post"), **self.HEADER)
         self.assertEqual(response.status_code, status.HTTP_200_OK)

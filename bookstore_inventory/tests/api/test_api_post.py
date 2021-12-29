@@ -19,7 +19,8 @@ class BookPostTestCase(TestSetUp):
 
         response = self.client.post(
             reverse("inventory:book_get_post"),
-            data = valid_book_data
+            data = valid_book_data,
+            **self.HEADER
         )
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -35,7 +36,8 @@ class BookPostTestCase(TestSetUp):
 
         response = self.client.post(
             reverse("inventory:book_get_post"),
-            data = invalid_book_data
+            data = invalid_book_data,
+            **self.HEADER
         )
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
