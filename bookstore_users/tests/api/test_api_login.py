@@ -3,12 +3,13 @@ from rest_framework import status
 from rest_framework.exceptions import ErrorDetail
 # Local
 from bookstore_users.tests.api import TestSetUp
+from bookstore_users.models.user import User
 
 class UserLogInTestCase(TestSetUp):
     def test_valid_login(self):
         user_data = {
             "email"   : self.user_saved.email,
-            "password": self.user_saved_password,
+            "password": self.raw_password,
         }
 
         response = self.client.post(self.login_url, data = user_data)
@@ -34,6 +35,10 @@ class UserLogInTestCase(TestSetUp):
         }
 
         self.assertEqual(response.data, valid_error)
+
+        # Password should be hashed
+        user = User.objects.get(pk = self.user_saved.id)
+        self.assertNotEqual(user.password, self.raw_password)
 
     def test_if_user_not_register_then_cant_login(self):
         user_data = {

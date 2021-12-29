@@ -3,6 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 # Local
 from bookstore_users.tests.api import TestSetUp
+from bookstore_users.models.user import User
 
 class UserUpdateTestCase(TestSetUp):
     @classmethod
@@ -20,10 +21,10 @@ class UserUpdateTestCase(TestSetUp):
 
     def test_user_update_all_their_data(self):
         new_user_data = {
-            "first_name"   : self.faker_obj.first_name(),
-            "last_name" : self.faker_obj.last_name(),
-            "email"    : self.faker_obj.email(),
-            "password" : self.faker_obj.password(),
+            "first_name" : self.faker_obj.first_name(),
+            "last_name"  : self.faker_obj.last_name(),
+            "email"      : self.faker_obj.email(),
+            "password"   : self.faker_obj.password(),
         }
 
         response = self.client.put(
@@ -38,6 +39,10 @@ class UserUpdateTestCase(TestSetUp):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(new_user_data["email"], response.data["email"])
         self.assertEqual(new_user_data["first_name"], response.data["first_name"])
+
+        # Password should be hashed
+        user = User.objects.get(pk = self.user_saved.id)
+        self.assertNotEqual(new_user_data["password"], user.password)
 
     def test_user_cant_update_data_of_another_user(self):
         new_user_data = {
