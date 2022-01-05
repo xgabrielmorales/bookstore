@@ -4,6 +4,7 @@ djangorestframework==3.13.1
 djangorestframework-simplejwt==5.0.0
 factory-boy==3.2.1
 Faker==11.0.0
+Pillow==9.0.0
 psycopg2==2.9.2
 PyJWT==2.3.0
 python-dateutil==2.8.2
