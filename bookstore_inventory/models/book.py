@@ -9,6 +9,10 @@ class Book(models.Model):
     num_pages = models.PositiveSmallIntegerField(verbose_name = "number of pages")
     pub_date  = models.DateField(verbose_name = "publication date")
 
+    cover = models.ImageField(
+        upload_to="inventario/book/images/",
+        default="default_book_cover.png")
+
     class Meta:
         ordering = ["author", "pub_date"]
         verbose_name = "Book"
