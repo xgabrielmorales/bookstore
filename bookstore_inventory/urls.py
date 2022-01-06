@@ -8,12 +8,12 @@ app_name = "inventory"
 
 urlpatterns = [
     path(
-        '',
+        'api/',
         api.BookListCreateView.as_view(),
         name="book_get_post"
     ),
     path(
-        '<int:pk>/',
+        'api/<int:pk>/',
         api.BookDestroyUpdateView.as_view(),
         name="book_delete_put"
     ),
