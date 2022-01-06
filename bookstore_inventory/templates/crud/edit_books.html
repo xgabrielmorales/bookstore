@@ -1,0 +1,38 @@
+{% extends "../layout.html" %}
+
+{% block content %}
+
+<h1>Edit Books</h1>
+
+<!-- Formulario -->
+<form action="{% url 'inventory:update' book.id %}" method="POST">
+    {% csrf_token %}
+    <!-- Title -->
+    <label for="TitleTextInput">Title</label>
+    <input type="text" name="title" id="TitleTextInput" value="{{ book.title }}">
+
+    <!-- Author -->
+    <label for="AuthorTextInput">Author</label>
+    <input type="text" name="author" id="AuthorTextInput" value="{{ book.author }}">
+
+    <!-- Editorial -->
+    <label for="EditorialTextInput">Editorial</label>
+    <input type="text" name="editorial" id="EditorialTextInput" value="{{ book.editorial }}">
+
+    <!-- Gender -->
+    <label for="GenderTextInput">Gender</label>
+    <input type="text" name="gender" id="GenderTextInput" value="{{ book.gender }}">
+
+    <!-- Publication Date -->
+    <label for="PubDateTextInput">Pub. date</label>
+    <input type="date" name="pub_date" id="PubDateTextInput" value="{{ book.pub_date | date:"Y-m-d" }}">
+
+    <!-- Number of pages -->
+    <label for="NumPagesTextInput">Pages</label>
+    <input type="number" name="num_pages" id="NumPagesTextInput" value={{ book.num_pages }}>
+
+    <!-- Submit button -->
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}
