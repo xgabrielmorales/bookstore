@@ -21,3 +21,8 @@ def list_create_view(request):
         Book.objects.create(**book_data)
 
         return redirect("/book/")
+
+
+def delete_view(request, pk):
+    Book.objects.filter(pk=pk).delete()
+    return redirect("/book/")

@@ -13,6 +13,11 @@ urlpatterns = [
         name="list_create"
     ),
     path(
+        'delete/<int:pk>',
+        views.delete_view,
+        name="delete"
+    ),
+    path(
         'api/',
         api.BookListCreateView.as_view(),
         name="book_get_post"
