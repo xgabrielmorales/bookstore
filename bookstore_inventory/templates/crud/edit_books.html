@@ -24,11 +24,11 @@
     <input type="text" name="gender" id="GenderTextInput" value="{{ book.gender }}">
 
     <!-- Publication Date -->
-    <label for="PubDateTextInput">Pub. date</label>
+    <label for="PubDateTextInput">Publication date</label>
     <input type="date" name="pub_date" id="PubDateTextInput" value="{{ book.pub_date | date:"Y-m-d" }}">
 
     <!-- Number of pages -->
-    <label for="NumPagesTextInput">Pages</label>
+    <label for="NumPagesTextInput">Number of pages</label>
     <input type="number" name="num_pages" id="NumPagesTextInput" value={{ book.num_pages }}>
 
     <!-- Submit button -->
