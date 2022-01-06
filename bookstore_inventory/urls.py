@@ -8,6 +8,11 @@ app_name = "inventory"
 
 urlpatterns = [
     path(
+        '',
+        views.list_create_view,
+        name="list_create"
+    ),
+    path(
         'api/',
         api.BookListCreateView.as_view(),
         name="book_get_post"
