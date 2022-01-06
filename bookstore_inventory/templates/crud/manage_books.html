@@ -1,0 +1,69 @@
+{% extends "../layout.html" %}
+
+{% block content %}
+
+<h1>Manage Books</h1>
+
+<!-- Formulario -->
+<form action="/book/" method="POST">
+    {% csrf_token %}
+    <!-- Title -->
+    <label for="TitleTextInput">Title</label>
+    <input type="text" name="title" id="TitleTextInput">
+
+
+    <label for="AuthorTextInput">Author</label>
+    <input type="text" name="author" id="AuthorTextInput">
+
+    <!-- Editorial -->
+    <label for="EditorialTextInput">Editorial</label>
+    <input type="text" name="editorial" id="EditorialTextInput">
+
+    <!-- Gender -->
+    <label for="GenderTextInput">Gender</label>
+    <input type="text" name="gender" id="GenderTextInput">
+
+    <!-- Publication Date -->
+    <label for="PubDateTextInput">Pub. date</label>
+    <input type="date" name="pub_date" id="PubDateTextInput">
+
+    <!-- Number of pages -->
+    <label for="NumPagesTextInput">Pages</label>
+    <input type="number" name="num_pages" id="NumPagesTextInput">
+
+    <!-- Submit button -->
+    <button type="submit">Save</button>
+</form>
+
+<!-- Tabla -->
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Editorial</th>
+            <th>Genero</th>
+            <th>Num. Pages</th>
+            <th>Publication Date</th>
+            <th colspan="2">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.editorial }}</td>
+            <td>{{ book.gender }}</td>
+            <td>{{ book.num_pages }}</td>
+            <td>{{ book.pub_date }}</td>
+            <td><a href="{% url 'inventory:update' book.id %}">Edit</a></td>
+            <td><a href="{% url 'inventory:delete' book.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
