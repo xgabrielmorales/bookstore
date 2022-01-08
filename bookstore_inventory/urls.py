@@ -2,7 +2,7 @@
 from django.urls import path
 # Local
 from . import views
-from .views import api
+from .views import api as api_views
 
 app_name = "inventory"
 
@@ -22,14 +22,15 @@ urlpatterns = [
         views.update_view,
         name="update"
     ),
+    # API Views
     path(
         'api/',
-        api.BookListCreateView.as_view(),
+        api_views.BookListCreateView.as_view(),
         name="book_get_post"
     ),
     path(
         'api/<int:pk>/',
-        api.BookDestroyUpdateView.as_view(),
+        api_views.BookDestroyUpdateView.as_view(),
         name="book_delete_put"
     ),
 ]
