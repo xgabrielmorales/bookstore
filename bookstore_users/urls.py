@@ -6,14 +6,15 @@ from . import views
 app_name = "users"
 
 urlpatterns = [
+    # API VIEWS
     path(
-        '',
+        'api/',
         views.UserCreateRetriveView.as_view(),
-        name = "get_post",
+        name="get_post",
     ),
     path(
-        '<int:pk>/',
+        'api/<int:pk>/',
         views.UserDestroyUpdateView.as_view(),
-        name = "delete_put",
+        name="delete_put",
     ),
 ]
