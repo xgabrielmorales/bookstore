@@ -17,6 +17,11 @@ urlpatterns = [
         views.logout_view,
         name="logout"
     ),
+    path(
+        'signup',
+        views.signup_view,
+        name='signup'
+    ),
     # API VIEWS
     path(
         'api/',
