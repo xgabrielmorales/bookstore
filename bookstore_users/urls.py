@@ -7,6 +7,11 @@ from .views import api as api_views
 app_name = "users"
 
 urlpatterns = [
+    path(
+        'login/',
+        views.login_view,
+        name="login"
+    ),
     # API VIEWS
     path(
         'api/',
